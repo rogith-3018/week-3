@@ -1,0 +1,11 @@
+.button{
+    display: flex;
+    justify-content: center;
+    gap:20px;
+}
+button{
+    padding:15px 30px ;
+     }
+h1 {
+    text-align:center;
+}
