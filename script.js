@@ -1,5 +1,6 @@
 console.log("game ready");
-
+let youScore=0;
+let computerScore=0;
 const rock = document.querySelector("#rock");
 const paper = document.querySelector("#paper");
 const scissor = document.querySelector("#scissor");
@@ -29,19 +30,20 @@ function whoWins(you, computer) {
 }
 
 function play(you) {
+      if(youScore===3 ||computerScore===3){
+        return;
+      }
 
     let computer = computerPick();
     let winner = whoWins(you, computer);
 
-    console.log("You:", you);
-    console.log("Computer:", computer);
-    console.log("Winner:", winner);
 
     if (winner === "you") {
+        youScore++;
         document.querySelector("#result").textContent =
             `You win! ${you} beats ${computer}.`;
     }
-    else if (winner === "computer") {
+    else if (winner === "computer") {       computerScore++;
         document.querySelector("#result").textContent =
             `Computer wins! ${computer} beats ${you}.`;
     }
@@ -49,7 +51,16 @@ function play(you) {
         document.querySelector("#result").textContent =
             "It's a tie!";
     }
+    document.querySelector("#score").textContent=`you ${youScore} - ${computerScore} computer`;
+
+if(youScore===3){
+    document.querySelector("#result").textContent = "You won the game!";
 }
+else if(computerScore===3){
+    document.querySelector("#result").textContent = "Computer won the game!";
+}
+}
+
 
 rock.addEventListener("click", function () {
     play("rock");
@@ -62,3 +73,4 @@ paper.addEventListener("click", function () {
 scissor.addEventListener("click", function () {
     play("scissor");
 });
+
